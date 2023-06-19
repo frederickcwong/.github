@@ -88,7 +88,8 @@ jobs:
           # use "value" to override the default "semver" type behavior (i.e. getting version from repo tag)
           tags: |
             type=semver,enable=${{inputs.tag-full-semver}},pattern={{version}},value=${{inputs.semver}}
-            type=semver,pattern={{major}}.{{minor}},value=${{inputs.semver}}
+            type=semver,enable=${{inputs.tag-major-minor}},pattern={{major}}.{{minor}},value=${{inputs.semver}}
+            type=semver,enable=${{inputs.tag-major}},pattern={{major}},value=${{inputs.semver}}
             type=semver,enable=${{inputs.tag-build-date}},pattern={{version}}-${{steps.get-date.outputs.result}},value=${{inputs.semver}}
             type=semver,enable=${{inputs.tag-special-name}},pattern={{version}}-${{inputs.special-name}},value=${{inputs.semver}}
             type=raw,enable=${{inputs.tag-latest}},value=latest
