@@ -49,6 +49,8 @@ on:
       base-tag:
         type: string
         default: "default"
+      build-args:
+        type: string
       need-latest:
         type: boolean
         default: false
@@ -109,4 +111,5 @@ jobs:
           context: .
           push: true
           platforms: ${{ inputs.platforms }}
+          build-args: ${{ inputs.build-args }}
           tags: ${{ steps.docker-meta.outputs.tags }}
