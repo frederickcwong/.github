@@ -51,6 +51,8 @@ on:
         default: "default"
       build-args:
         type: string
+      labels:
+        type: string
       need-latest:
         type: boolean
         default: false
@@ -78,6 +80,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ inputs.org }}/${{ inputs.image }}
+          labels: ${{inputs.labels}}
           tags: |
             type=raw,enable=${{inputs.need-build-date}},value=${{inputs.base-tag}}-${{steps.get-date.outputs.result}}
             type=raw,enable=${{!inputs.need-build-date}},value=${{inputs.base-tag}}
