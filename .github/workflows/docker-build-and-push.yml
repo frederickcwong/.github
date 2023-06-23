@@ -110,6 +110,9 @@ jobs:
         with:
           context: .
           push: true
+          pull: true # pull the reference image
+          no-cache: true # do not use cache
           platforms: ${{ inputs.platforms }}
           build-args: ${{ inputs.build-args }}
           tags: ${{ steps.docker-meta.outputs.tags }}
+          labels: ${{ steps.docker-meta.outputs.labels }}
